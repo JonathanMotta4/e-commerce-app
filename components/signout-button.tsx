@@ -5,16 +5,16 @@ import { Button } from '@/components/ui/button'
 import { authClient } from '@/lib/auth-client'
 
 export function SignOutButton() {
-  const router = useRouter()
-  async function signOut() {
-    await authClient.signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          router.replace('/')
-        }
-      }
-    })
-  }
+	const router = useRouter()
+	async function signOut() {
+		await authClient.signOut({
+			fetchOptions: {
+				onSuccess: () => {
+					router.replace('/')
+				}
+			}
+		})
+	}
 
-  return <Button onClick={signOut}>Sair da conta</Button>
+	return <Button onClick={signOut}>Sair da conta</Button>
 }
