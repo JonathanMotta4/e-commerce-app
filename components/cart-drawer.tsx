@@ -1,6 +1,6 @@
 'use client'
 
-import { ShoppingCart, Trash2 } from 'lucide-react'
+import { CreditCard, ShoppingCart, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
 	Sheet,
@@ -40,19 +40,20 @@ export function CartDrawer() {
 					<ShoppingCart className='h-5 w-5' />
 				</Button>
 			</SheetTrigger>
+
 			<SheetContent>
 				<SheetHeader>
-					<SheetTitle>Your Cart</SheetTitle>
+					<SheetTitle>Seu Carrinho</SheetTitle>
 				</SheetHeader>
 
 				<div className='mt-6 space-y-4'>
 					{cart.length === 0 ? (
-						<p className='text-muted-foreground'>Cart is empty.</p>
+						<p className='px-4 text-muted-foreground'>Carrinho vazio.</p>
 					) : (
 						cart.map((item) => (
 							<div
 								key={item.priceId}
-								className='flex justify-between items-center border-b pb-2'
+								className='flex justify-between items-center border-b px-4 pb-2'
 							>
 								<div>
 									<p className='font-medium'>{item.name}</p>
@@ -60,7 +61,7 @@ export function CartDrawer() {
 										Qty: {item.quantity}
 									</p>
 								</div>
-								<div className='text-right'>
+								<div className='text-right flex items-center gap-2'>
 									<p className='text-sm'>
 										{new Intl.NumberFormat('pt-BR', {
 											style: 'currency',
@@ -88,10 +89,16 @@ export function CartDrawer() {
 								{new Intl.NumberFormat('pt-BR', {
 									style: 'currency',
 									currency: cart[0]?.currency || 'BRL'
-								}).format(total / 100)}{' '}
+								}).format(total / 100)}
 							</span>
 						</div>
-						<Button onClick={handleCheckout}>Checkout</Button>
+						<Button
+							onClick={handleCheckout} variant={'outline'}
+							className='flex items-center justify-center gap-2'
+						>
+							<CreditCard size={16} />
+							Checkout
+						</Button>
 					</SheetFooter>
 				)}
 			</SheetContent>
