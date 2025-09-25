@@ -1,10 +1,32 @@
-import Link from 'next/link'
+import { ProductCard } from '@/components/product-card'
 
-export default function Home() {
+interface Price {
+	id: string
+	unit_amount: number | null
+	currency: string
+	recurring: { interval: string } | null
+}
+
+interface Product {
+	id: string
+	name: string
+	image: string | null
+	description: string
+	prices: Price[]
+}
+export default async function HomePage() {
+	const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/products`, {
+		cache: 'no-store'
+	})
+	const products: Product[] = await res.json()
 	return (
-		<main className='flex gap-2'>
-			<Link href={'/login'}>Login</Link>
-			<Link href={'/products'}>Products</Link>
+		<main className='p-8'>
+			<h1 className='mb-6 text-3xl font-bold'>Products</h1>
+			<div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3'>
+				{products.map((product) => (
+					<ProductCard key={product.id} product={product} />
+				))}
+			</div>
 		</main>
 	)
 }
