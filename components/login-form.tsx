@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import { CredentialsSignIn } from './credentials-signin'
+import { GithubSignIn } from './github-signin'
 import { Button } from './ui/button'
 import {
 	Card,
@@ -8,8 +10,6 @@ import {
 	CardTitle
 } from './ui/card'
 import { Separator } from './ui/separator'
-import { GithubSignIn } from './github-signin'
-import { CredentialsSignIn } from './credentials-signin'
 
 export function LoginForm() {
 	return (

@@ -93,7 +93,8 @@ export function CartDrawer() {
 							</span>
 						</div>
 						<Button
-							onClick={handleCheckout} variant={'outline'}
+							onClick={handleCheckout}
+							variant={'outline'}
 							className='flex items-center justify-center gap-2'
 						>
 							<CreditCard size={16} />

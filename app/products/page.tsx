@@ -22,10 +22,10 @@ export default async function HomePage() {
 	const products: Product[] = await res.json()
 
 	return (
-		<main className="p-8 max-w-7xl mx-auto">
-			<h1 className="mb-8 text-4xl font-extrabold text-center">Our Products</h1>
+		<main className='p-8 max-w-7xl mx-auto'>
+			<h1 className='mb-8 text-4xl font-extrabold text-center'>Our Products</h1>
 
-			<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+			<div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
 				{products.map((product) => (
 					<ProductCard key={product.id} product={product} />
 				))}
