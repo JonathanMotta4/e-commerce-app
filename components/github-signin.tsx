@@ -13,7 +13,9 @@ export function GithubSignIn() {
 			console.log(data.error)
 			toast.error('Error at signin with Github')
 		}
-		console.log(data)
+		console.log(data) 
+    // Redirect to BetterAuth social login endpoint
+    window.location.href = '/api/auth/sign-in/github?callbackURL=/dashboard'
 	}
 	return (
 		<Button onClick={handleSignin} variant={'outline'}>
